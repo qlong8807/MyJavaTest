@@ -1,0 +1,9 @@
+使用logback需要3个jar包
+logback-classic-1.0.0.jar
+logback-core-1.0.0.jar
+slf4j-api-1.6.2.jar
+如果有过滤，还需要
+janino.jar
+commons-compiler.jar
+
+logback.xml已经实现输出到不同的文件，过滤匹配的字符串
