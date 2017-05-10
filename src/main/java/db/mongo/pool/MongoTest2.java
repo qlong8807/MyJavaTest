@@ -13,14 +13,15 @@ public class MongoTest2 {
 		MongoConfig.setPwd("zhcl");
 		MongoConfig.setDbName("zhcl");
 		MongoManager mongoManager = new MongoManager();
-		DBCollection users = mongoManager.getDBCollection("users");
+		DBCollection collection = mongoManager.getDBCollection("users");
 
 		DBObject user = new BasicDBObject();
 		user.put("name", "hoojo2");
 		user.put("age", 241);
 //		users.save(user);
-		System.out.println("count: " + users.count());
-		int r = users.insert(user, new BasicDBObject("aaa", "bbb")).getN();
+		System.out.println("count: " + collection.count());
+		int r = collection.insert(user, new BasicDBObject("aaa", "bbb")).getN();
 		System.out.println(r);
+//		DBObject findOne = collection.findOne();
 	}
 }

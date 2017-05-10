@@ -4,6 +4,9 @@ import java.io.UnsupportedEncodingException;
 
 public final class Convert {
 	private final static byte[] hex = "0123456789ABCDEF".getBytes();
+	private static String[] binaryArray = { "0000", "0001", "0010", "0011",
+		"0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011",
+		"1100", "1101", "1110", "1111" };
 
 	/**
 	 * 字节数组转换到十六进制字符串
@@ -178,9 +181,40 @@ public final class Convert {
 		}
 		return sb.toString();
 	}
+	public static int byteStringToInt(String bi) {
+		int len = bi.length();
+		int sum = 0;
+		int tmp, max = len - 1;
+		for (int i = 0; i < len; ++i) {
+			tmp = bi.charAt(i) - '0';
+			sum += tmp * Math.pow(2, max--);
+		}
+		return sum;
+	}
+	/**
+	 * 
+	 * @param str
+	 * @return 转换为二进制字符串
+	 */
+	public static String bytes2BinaryStr(byte[] bArray) {
+
+		String outStr = "";
+		int pos = 0;
+		for (byte b : bArray) {
+			// 高四位
+			pos = (b & 0xF0) >> 4;
+			outStr += binaryArray[pos];
+			// 低四位
+			pos = b & 0x0F;
+			outStr += binaryArray[pos];
+		}
+		return outStr;
+
+	}
 	public static void main(String[] args) {
 		try {
 			System.err.println(new String(Convert.hexStringToBytes("24263131383131324D554C4C494E4B2A493231312E3130332E3137392E36312A422A5032303430352A53312A"),"GBK"));
+			System.out.println(bytesToHexString(intTobytes(65535, 4)));
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

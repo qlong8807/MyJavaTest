@@ -22,6 +22,7 @@ public class HttpRequestor {
     private Integer socketTimeout = null;
     private String proxyHost = null;
     private Integer proxyPort = null;
+    private String cookies = null;
     
     /**
      * Do GET request
@@ -39,7 +40,10 @@ public class HttpRequestor {
         
         httpURLConnection.setRequestProperty("Accept-Charset", charset);
         httpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        
+        if(null != this.getCookies()){
+        	System.out.println("当前get请求的cookies为："+this.getCookies());
+            httpURLConnection.addRequestProperty("Cookie", this.getCookies());
+        }
         InputStream inputStream = null;
         InputStreamReader inputStreamReader = null;
         BufferedReader reader = null;
@@ -85,12 +89,12 @@ public class HttpRequestor {
      * @return
      * @throws Exception 
      */
-    public String doPost(String url, Map parameterMap) throws Exception {
+    public String doPost(String url, Map<String, String> parameterMap) throws Exception {
         
         /* Translate parameter map to parameter date string */
         StringBuffer parameterBuffer = new StringBuffer();
         if (parameterMap != null) {
-            Iterator iterator = parameterMap.keySet().iterator();
+            Iterator<String> iterator = parameterMap.keySet().iterator();
             String key = null;
             String value = null;
             while (iterator.hasNext()) {
@@ -244,6 +248,14 @@ public class HttpRequestor {
     public void setCharset(String charset) {
         this.charset = charset;
     }
+
+	public String getCookies() {
+		return cookies;
+	}
+
+	public void setCookies(String cookies) {
+		this.cookies = cookies;
+	}
     
 }
 

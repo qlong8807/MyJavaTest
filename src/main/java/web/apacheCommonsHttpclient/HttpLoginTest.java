@@ -1,4 +1,4 @@
-package web.t3;
+package web.apacheCommonsHttpclient;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,9 +12,11 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 /**
- * @author 核弹头 Email:happyman_dong@sina.com 版权所有 盗版必究
- * @since 2009-8-11
- * @version 1.0
+ * 1. post登录
+ * 2. 获取登录的cookies和response
+ * 3. 使用加入cookies的post请求下一个页面
+ * @date 2016年11月30日
+ * 
  */
 public class HttpLoginTest {
 
