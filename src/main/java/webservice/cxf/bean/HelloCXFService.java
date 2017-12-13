@@ -1,11 +1,8 @@
 package webservice.cxf.bean;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-
-@WebService
+//@WebService
 public interface HelloCXFService {
 
-	@WebMethod
+//	@WebMethod
 	public String say(String hello);
 }

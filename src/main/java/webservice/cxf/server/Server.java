@@ -15,7 +15,6 @@ public class Server {
 		config_DataAnalysisfactory.setAddress("http://localhost:8899/HelloService");
 		config_DataAnalysisfactory.setServiceBean(analysisWS);
 		config_DataAnalysisfactory.create();
-		
 	}
 
 }
