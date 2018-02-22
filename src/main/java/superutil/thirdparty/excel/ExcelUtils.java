@@ -46,7 +46,7 @@ import superutil.j2se.ReflectUtils;
  * @see superutil.thirdparty.excel.CustomizeToExcel
  * @author Goofy <a href="http://www.xdemo.org">http://www.xdemo.org</a>
  */
-@Deprecated
+//@Deprecated
 public class ExcelUtils<E> {
 	private E e;
 	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

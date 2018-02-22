@@ -7,7 +7,7 @@ import org.apache.commons.net.telnet.TelnetClient;
 public class TelnetUtil {
 
 	public static void main(String[] args) {
-		boolean connected = TelnetUtil.isConnected("172.16.1.226", 21800);
+		boolean connected = TelnetUtil.isConnected("211.157.2.91", 6688);
 		System.out.println(connected);
 	}
 	public static boolean isConnected(String ip,int port){
