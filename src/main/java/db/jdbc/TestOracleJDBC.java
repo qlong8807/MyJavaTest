@@ -3,43 +3,12 @@ package db.jdbc;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
-import java.sql.ParameterMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class TestOracleJDBC {
 	public static void main(String[] args) {
-//		oneinsert();
-//		batchinsert();
-		test();
-	}
-	
-	public static void test() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection connection = DriverManager.getConnection(
-					"jdbc:Oracle:thin:@192.168.0.216:1521:orcl", "ykt", "ykt");
-			if (null == connection) {
-				System.out.println("获取不到数据库连接");
-				System.exit(0);
-			}
-			PreparedStatement psp = connection
-					.prepareStatement("select * from dynamic_report_records r where r.id=?");
-			ParameterMetaData parameterMetaData = psp.getParameterMetaData();
-			int parameterCount = parameterMetaData.getParameterCount();
-			System.err.println(parameterCount);
-			psp.setString(1, " 3");
-			ResultSet executeQuery = psp.executeQuery();
-			while(executeQuery.next()) {
-				String string = executeQuery.getString(1);
-				System.err.println(string);
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		batchinsert();
 	}
 
 	public static void oneinsert() {
@@ -108,7 +77,7 @@ public class TestOracleJDBC {
 				connection.setAutoCommit(false);
 				String sql = "insert into TRADE_BASE(TRADE_BASE_NO,REQUEST_HISTORY_NO,TOTAL_AMOUNT,TRADE_TYPE,PAY_TYPE,CREATE_DATE,UPDATE_DATE) values(?,?,?,?,?,?,?)";
 				PreparedStatement ps = connection.prepareStatement(sql);
-				for (int j = 0; j < 500; j++) {
+				for (int j = 0; j < 10000; j++) {
 					ps.setInt(1, id);
 					ps.setLong(2, 20161031151600044L);
 					ps.setLong(3, 140);
