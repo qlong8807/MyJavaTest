@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
  * @author zyl
  * @date 2018年6月28日
  * @desc 并发线程控制
+ * 并发限制：CountDownLatch,Semaphore
  */
 public class SemaphoreTest {
 	
