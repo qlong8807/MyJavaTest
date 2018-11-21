@@ -8,3 +8,38 @@ CXF所需最少jar包可以查看github上的CXFWebService项目或者百度网盘。
 CXF错误：
 1： Unmarshalling Error: unexpected element (uri:"", local:"arg0"). Expected elements
 	客户端代码版本和服务器不一致，或者参数不对，请使用wsdl2java生成客户端
+	
+大坑啊：
+xcf默认的wsdl4j是1.6.3，引入会有各种javax.wsdl包下的错误，这里需要引入1.6.2。
+<groupId>wsdl4j</groupId>
+<artifactId>wsdl4j</artifactId>
+<version>1.6.2</version>
+
+CXF只需要引入以下jar包：
+        <!-- cxf开始 -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-core</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.6.2</version><!-- 这里需要注意版本号，默认的是1.6.3，不可用 -->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>${cxf.version}</version><!-- 创建服务端需要该jar包-->
+        </dependency>
+        <!-- cxf结束 -->

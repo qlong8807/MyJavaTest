@@ -57,7 +57,7 @@ public class HttpClientUtil {
 			httpPost = new HttpPost(url);
 			// 设置参数
 			List<NameValuePair> list = new ArrayList<NameValuePair>();
-			Iterator iterator = map.entrySet().iterator();
+			Iterator<Entry<String, String>> iterator = map.entrySet().iterator();
 			while (iterator.hasNext()) {
 				Entry<String, String> elem = (Entry<String, String>) iterator
 						.next();
@@ -68,6 +68,8 @@ public class HttpClientUtil {
 						charset);
 				httpPost.setEntity(entity);
 			}
+//			Header h1 = new Header();
+//			h1.addField(new MinimalField("", ""));
 			HttpResponse response = httpClient.execute(httpPost);
 			if (response != null) {
 				HttpEntity resEntity = response.getEntity();

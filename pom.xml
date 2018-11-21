@@ -106,19 +106,10 @@
 			<artifactId>jts</artifactId>
 			<version>1.13</version>
 		</dependency>
+		<!-- cxf开始 -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-core</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-bindings-soap</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-databinding-jaxb</artifactId>
 			<version>${cxf.version}</version>
 		</dependency>
 		<dependency>
@@ -128,34 +119,21 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-simple</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
 			<version>${cxf.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-wsdl</artifactId>
-			<version>${cxf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.woodstox</groupId>
-			<artifactId>stax2-api</artifactId>
-			<version>3.1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.woodstox</groupId>
-			<artifactId>woodstox-core-asl</artifactId>
-			<version>4.4.1</version>
-		</dependency>
-		<dependency>
-			<groupId>xfire</groupId>
+			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
-			<version>1.5.2</version>
+			<version>1.6.2</version><!-- 这里需要注意版本号，默认的是1.6.3，不可用 -->
 		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+			<version>${cxf.version}</version><!-- 创建服务端需要该jar包 -->
+		</dependency>
+		<!-- cxf结束 -->
+
 		<dependency>
 			<groupId>org.codehaus.janino</groupId>
 			<artifactId>janino</artifactId>
@@ -344,6 +322,17 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>23.6-jre</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jctools</groupId>
+			<artifactId>jctools-core</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<!-- 实现SSH功能的java  library -->
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.54</version>
 		</dependency>
 	</dependencies>
 </project>

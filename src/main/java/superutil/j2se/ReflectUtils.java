@@ -46,7 +46,7 @@ public class ReflectUtils {
 		Method[] m = clazz.getDeclaredMethods();
 
 		for (int i = 0; i < m.length; i++) {
-			if (m[i].getName().equals(m)) {
+			if (m[i].getName().equals(method)) {
 				return m[i].getModifiers();
 			}
 		}
