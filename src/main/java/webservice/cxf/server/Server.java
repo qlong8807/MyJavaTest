@@ -4,17 +4,19 @@ import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
 
 import webservice.cxf.bean.HelloCXFService;
 import webservice.cxf.bean.HelloCXFServiceImpl;
+import webservice.cxf.interceptor.AuthInInterceptor;
 
 
 public class Server {
 
 	public static void main(String[] args) {
-		JaxWsServerFactoryBean config_DataAnalysisfactory = new JaxWsServerFactoryBean();
+		JaxWsServerFactoryBean factory = new JaxWsServerFactoryBean();
 		HelloCXFService analysisWS = new HelloCXFServiceImpl();
-		config_DataAnalysisfactory.setServiceClass(HelloCXFService.class);
-		config_DataAnalysisfactory.setAddress("http://localhost:8899/HelloService");
-		config_DataAnalysisfactory.setServiceBean(analysisWS);
-		config_DataAnalysisfactory.create();
+		factory.setServiceClass(HelloCXFService.class);
+		factory.setAddress("http://localhost:8899/HelloService?wsdl");
+		factory.setServiceBean(analysisWS);
+		factory.getInInterceptors().add(new AuthInInterceptor());
+		factory.create();
 	}
 
 }
