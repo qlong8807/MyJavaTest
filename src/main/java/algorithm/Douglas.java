@@ -8,7 +8,10 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 
-/*** ClassDouglas.java */
+/*** 道格拉斯-普克算法 (亦称为拉默-道格拉斯-普克算法、迭代适应点算法、分裂与合并算法)是将曲线近似表示为一系列点，并减少点的数量的一种算法。
+ * 算法的基本思路是:对每一条曲线的首末点虚连一条直线,求所有点与直线的距离,并找出最大距离值dmax ,用dmax与限差D相比:
+ * 若dmax <D,这条曲线上的中间点全部舍去;若dmax ≥D,保留dmax 对应的坐标点,并以该点为界,把曲线分为两部分,对这两部分重复使用该方法。
+ *  */
 public class Douglas {
 	/*** 存储采样点数据的链表 */
 	public List<Point> points = new ArrayList<Point>();
