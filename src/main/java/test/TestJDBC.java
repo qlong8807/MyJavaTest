@@ -12,9 +12,9 @@ public class TestJDBC {
 		// DbUtil dbUtil = new DbUtil();
 		// dbUtil.getConnection();
 		String outId = "";
-		// ¼ÓÔØOracleÇı¶¯
+		// åŠ è½½Oracleé©±åŠ¨
 		DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
-		// »ñµÃOracleÊı¾İ¿âÁ¬½Ó
+		// è·å¾—Oracleæ•°æ®åº“è¿æ¥
 		Connection conn = DriverManager.getConnection(
 				"jdbc:oracle:thin:@192.168.20.7:1521:sxnet", "bankalarm",
 				"secretnew");
@@ -22,20 +22,20 @@ public class TestJDBC {
 		String sql = "select * from org_info";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.getResultSet();
-		ResultSetMetaData m = null;// »ñÈ¡ ÁĞĞÅÏ¢
+		ResultSetMetaData m = null;// è·å– åˆ—ä¿¡æ¯
 
 		try {
 			m = rs.getMetaData();
 
 			int columns = m.getColumnCount();
-			// ÏÔÊ¾ÁĞ,±í¸ñµÄ±íÍ·
+			// æ˜¾ç¤ºåˆ—,è¡¨æ ¼çš„è¡¨å¤´
 			for (int i = 1; i <= columns; i++) {
 				System.out.print(m.getColumnName(i));
 				System.out.print("\t\t");
 			}
 
 			System.out.println();
-			// ÏÔÊ¾±í¸ñÄÚÈİ
+			// æ˜¾ç¤ºè¡¨æ ¼å†…å®¹
 			while (rs.next()) {
 				for (int i = 1; i <= columns; i++) {
 					System.out.print(rs.getString(i));
@@ -43,7 +43,7 @@ public class TestJDBC {
 				}
 				System.out.println();
 			}
-			// Ö´ĞĞOracle´æ´¢¹ı³Ì
+			// æ‰§è¡ŒOracleå­˜å‚¨è¿‡ç¨‹
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
